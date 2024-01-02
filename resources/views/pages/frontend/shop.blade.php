@@ -192,7 +192,10 @@
                                 {{-- {{ $product->galleries->first()->image }} --}}
                                 <div class="pi-pic">
                                     <img src="{{ Storage::url($product->galleries->first()->image) }}" alt="">
-                                    <div class="sale pp-sale">Sale</div>
+                                    {{-- <div class="sale pp-sale">Sale</div> --}}
+                                    @if ($product->discount_price > 0)
+                                        <div class="sale">Discount</div>
+                                    @endif
                                     <div class="icon">
                                         <i class="icon_heart_alt"></i>
                                     </div>
@@ -207,10 +210,16 @@
                                     <a href="#">
                                         <h5>{{ $product->name }}</h5>
                                     </a>
-                                    <div class="product-price">
-                                        Rp. {{ number_format($product->price) }}
-                                        {{-- <span>$35.00</span> --}}
-                                    </div>
+                                    @if ($product->discount_price > 0)
+                                        <div class="product-price">
+                                            Rp{{ number_format($product->discount_price, 0, ',', '.') }}
+                                            <span>Rp{{ number_format($product->price, 0, ',', '.') }}</span>
+                                        </div>
+                                    @else
+                                        <div class="product-price">
+                                            Rp{{ number_format($product->price, 0, ',', '.') }}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

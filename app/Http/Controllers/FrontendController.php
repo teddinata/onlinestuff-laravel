@@ -5,17 +5,42 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Cart;
 
 class FrontendController extends Controller
 {
+    private function formatPrice($price)
+    {
+        return number_format($price, 0, ',', '.');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $user = auth()->user();
         $categories = Category::all();
+
+        // $cartItems = \Cart::session(auth()->id())->getContent();
+        $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        $totalPrice = $cartItems->sum(function ($cartItem) {
+            $price = $cartItem->product->discount_price > 0
+                ? $cartItem->product->discount_price
+                : $cartItem->product->price;
+
+            return $price * $cartItem->quantity;
+        });
+        $totalPriceFormatted = $this->formatPrice($totalPrice);
+
+        // product
+        $products = Product::orderBy('created_at', 'DESC')->limit(8)->get();
+
         return view('pages.frontend.index', [
-            'categories' => $categories
+            'categories' => $categories,
+            'products' => $products,
+            'cartItems' => $cartItems,
+            'cartItemsCount' => $cartItems->count(),
+            'totalPriceFormatted' => $totalPriceFormatted,
         ]);
     }
 
@@ -74,6 +99,14 @@ class FrontendController extends Controller
         return view('pages.frontend.detail', compact('product', 'categories', 'relatedProducts'));
     }
 
+    public function about()
+    {
+        $categories = Category::all();
+
+        return view('pages.frontend.about-us', [
+            'categories' => $categories,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

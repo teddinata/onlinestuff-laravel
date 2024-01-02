@@ -507,7 +507,7 @@ DhillaStuff - Detail Produk
                     </a>
                     <div class="product-price">
                         Rp 1.000.000
-                        <span>Rp. 500.000</span>
+                        <span>Rp500.000</span>
                     </div>
                 </div>
             </div>

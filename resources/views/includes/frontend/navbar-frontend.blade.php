@@ -56,42 +56,45 @@
                         <li class="cart-icon">
                             <a href="#">
                                 <i class="icon_bag_alt"></i>
-                                <span>3</span>
+                                <span>{{ $cartItemsCount }}</span>
                             </a>
                             <div class="cart-hover">
                                 <div class="select-items">
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <td class="si-pic"><img src="img/select-product-1.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="si-pic"><img src="img/select-product-2.jpg" alt=""></td>
-                                                <td class="si-text">
-                                                    <div class="product-selected">
-                                                        <p>$60.00 x 1</p>
-                                                        <h6>Kabino Bedside Table</h6>
-                                                    </div>
-                                                </td>
-                                                <td class="si-close">
-                                                    <i class="ti-close"></i>
-                                                </td>
-                                            </tr>
+                                            @forelse ($cartItems as $cartItem)
+                                                <tr>
+                                                    <td class="si-pic">
+                                                        <img
+                                                            style="width: 70px; height: 70px; object-fit: cover; object-position: center;"
+                                                            src="{{ Storage::url($cartItem->product->galleries->first()->image ? $cartItem->product->galleries->first()->image : '') }}" alt="">
+                                                    </td>
+                                                    <td class="si-text">
+                                                        <div class="product-selected">
+                                                            {{-- <p>{{ $cartItem->product->name }} x {{ $cartItem->quantity }}</p> --}}
+                                                            @if ($cartItem->product->discount_price)
+                                                                <p>Rp{{ number_format($cartItem->product->discount_price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
+                                                            @else
+                                                                <p>Rp{{ number_format($cartItem->product->price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
+                                                            @endif
+                                                            <h6>{{ $cartItem->product->name }}</h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="si-close">
+                                                        <a href="{{ url('cart/remove', ['id' => $cartItem->id]) }}"><i class="ti-close"></i></a>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="3" class="text-center">No items in cart</td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="select-total">
                                     <span>total:</span>
-                                    <h5>$120.00</h5>
+                                    <h5>Rp{{ $totalPriceFormatted }}</h5>
                                 </div>
                                 <div class="select-button">
                                     <a href="#" class="primary-btn view-card">VIEW CARD</a>
@@ -123,7 +126,7 @@
             <nav class="nav-menu mobile-menu">
                 <ul>
                     <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="./contact.html">About Us</a></li>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
                     <li class="{{ (request()->is('shop')) ? 'active' : '' }}"><a href="{{ url('/shop') }}">Shop</a></li>
                     {{-- <li><a href="#">Collection</a>
                         <ul class="dropdown">

@@ -8,36 +8,36 @@ Dhilla Stuff
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/hero-1.jpg') }}">
+        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7461.PNG') }}">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5">
+                    {{-- <div class="col-lg-5">
                         <span>Bag,kids</span>
                         <h1>Black friday</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore</p>
                         <a href="#" class="primary-btn">Shop Now</a>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="off-card">
+                {{-- <div class="off-card">
                     <h2>Sale <span>50%</span></h2>
-                </div>
+                </div> --}}
             </div>
         </div>
-        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/hero-2.jpg') }}">
+        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7458.PNG') }}">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5">
+                    {{-- <div class="col-lg-5">
                         <span>Bag,kids</span>
                         <h1>Black friday</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore</p>
                         <a href="#" class="primary-btn">Shop Now</a>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="off-card">
+                {{-- <div class="off-card">
                     <h2>Sale <span>50%</span></h2>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -82,111 +82,65 @@ Dhilla Stuff
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <div class="product-large set-bg" data-setbg="{{ url('frontend/img/products/women-large.jpg') }}">
-                    <h2>Women’s</h2>
-                    <a href="#">Discover More</a>
+                <div class="product-large set-bg" data-setbg="{{ url('frontend/img/binder.jpeg') }}">
+                    {{-- <h2>Women’s</h2>
+                    <a href="#">Discover More</a> --}}
                 </div>
             </div>
             <div class="col-lg-8 offset-lg-1">
                 <div class="filter-control">
-                    <ul>
-                        <li class="active">Clothings</li>
-                        <li>HandBag</li>
-                        <li>Shoes</li>
-                        <li>Accessories</li>
+                    <ul class="nav nav-tabs">
+                        @foreach($categories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::segment(2) == $category->slug ? 'active' : '' }}"
+                                   id="{{ $category->slug }}-tab" data-toggle="tab"
+                                   href="{{ url('/shop', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
+
                 <div class="product-slider owl-carousel">
+                    @foreach ($products as $product)
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="{{ url('frontend/img/products/women-1.jpg') }}">
-                            <div class="sale">Sale</div>
+                            <img src="{{ Storage::url($product->galleries->first()->image) }}" alt="" style="width: 100%; height: 300px; object-fit: cover; object-position: center; border-radius: 10px;">
+                            @if ($product->discount_price > 0)
+                                <div class="sale">Discount</div>
+                            @endif
                             <div class="icon">
                                 <i class="icon_heart_alt"></i>
                             </div>
                             <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                {{-- <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li> --}}
+                                <li class="w-icon active" data-product-id="{{ $product->id }}">
+                                    <a href="#"><i class="icon_bag_alt"></i></a>
+                                </li>
+
                                 <li class="quick-view"><a href="#">+ Quick View</a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
                         <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
+                            <div class="catagory-name">{{ $product->category->name }}</div>
                             <a href="#">
-                                <h5>Pure Pineapple</h5>
+                                <h5>{{ $product->name }}</h5>
                             </a>
-                            <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
-                            </div>
+                            {{-- check price --}}
+                            @if ($product->discount_price > 0)
+                                <div class="product-price">
+                                    Rp{{ number_format($product->discount_price, 0, ',', '.') }}
+                                    <span>Rp{{ number_format($product->price, 0, ',', '.') }}</span>
+                                </div>
+                            @else
+                                <div class="product-price">
+                                    Rp{{ number_format($product->price, 0, ',', '.') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{ url('frontend/img/products/women-2.jpg') }}">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Shoes</div>
-                            <a href="#">
-                                <h5>Guangzhou sweater</h5>
-                            </a>
-                            <div class="product-price">
-                                $13.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{ url('frontend/img/products/women-3.jpg') }}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="{{ url('frontend/img/products/women-4.jpg') }}" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Converse Shoes</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -539,3 +493,31 @@ Dhilla Stuff
 </div>
 <!-- Partner Logo Section End -->
 @endsection
+
+@push('addon-script')
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.w-icon').on('click', function() {
+            var productId = $(this).data('product-id');
+            var quantity = 1;
+
+            $.ajax({
+                url: '/cart/' + productId + '/' + quantity,
+                method: 'POST',
+                data: {_token: '{{ csrf_token() }}'
+            },
+                success: function(response) {
+                    alert('Product added to cart!');
+                    console.log(response);
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    alert('Error adding product to cart.');
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+@endpush

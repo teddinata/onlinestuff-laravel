@@ -21,7 +21,7 @@
                     // }},
                     // price text align right and format currency
                     { data: 'price', name: 'price', className: 'text-right', render: function(data, type, row) {
-                        return 'Rp. ' + data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        return 'Rp' + data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                     }},
                     { data: 'stock', name: 'stock', className: 'text-right' },
                     // { data: 'status', name: 'status', className: 'text-center', render: function(data, type, row) {

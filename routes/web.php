@@ -59,3 +59,14 @@ Route::get('/product/{slug}', [App\Http\Controllers\FrontendController::class, '
 Route::get('/shop/{category?}', [App\Http\Controllers\FrontendController::class, 'shop'])->name('shop');
 // detail
 Route::get('/product/{slug}', [App\Http\Controllers\FrontendController::class, 'productDetail'])->name('product.detail');
+
+// about
+Route::get('/about', [App\Http\Controllers\FrontendController::class, 'about'])->name('about');
+
+// cart
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/cart', [App\Http\Controllers\FrontendController::class, 'cart'])->name('cart');
+    Route::post('/cart/{productId}/{quantity}', [App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/{cartId}', [App\Http\Controllers\CartController::class, 'removeCart'])->name('cart.remove');
+    Route::post('/cart/update/{cartId}', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cart.update');
+});
