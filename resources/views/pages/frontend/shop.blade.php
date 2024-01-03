@@ -200,7 +200,9 @@
                                         <i class="icon_heart_alt"></i>
                                     </div>
                                     <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="w-icon active" data-product-id="{{ $product->id }}">
+                                            <a href="#"><i class="icon_bag_alt"></i></a>
+                                        </li>
                                         <li class="quick-view"><a href="{{ route('product.detail', $product->slug) }}">View Product</a></li>
                                         <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                     </ul>
@@ -291,9 +293,34 @@
 @endpush
 
 @push('addon-script')
-
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('.w-icon').on('click', function() {
+            var productId = $(this).data('product-id');
+            var quantity = 1;
+
+            $.ajax({
+                url: '/cart/' + productId + '/' + quantity,
+                method: 'POST',
+                data: {_token: '{{ csrf_token() }}'
+            },
+                success: function(response) {
+                    alert('Product added to cart!');
+                    console.log(response);
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    alert('You must login first to add product to cart!');
+                    console.error(error);
+                }
+            });
+        });
+    });
+</script>
+
+
+{{-- <script>
     $(function () {
         // Initialize the jQuery UI slider
         $("#custom-price-range").slider({
@@ -311,5 +338,5 @@
         $("#minamount").val($("#custom-price-range").slider("values", 0).toLocaleString());
         $("#maxamount").val($("#custom-price-range").slider("values", 1).toLocaleString());
     });
-</script>
+</script> --}}
 @endpush

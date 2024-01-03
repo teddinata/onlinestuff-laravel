@@ -304,40 +304,40 @@ Dhilla Stuff
 
 <!-- Instagram Section Begin -->
 <div class="instagram-photo">
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-1.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-1.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-2.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-2.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-3.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-3.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-4.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-4.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-5.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-5.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/insta-6.jpg') }}">
+    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-6.jpeg') }}">
         <div class="inside-text">
             <i class="ti-instagram"></i>
-            <h5><a href="#">colorlib_Collection</a></h5>
+            <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
 </div>
@@ -513,7 +513,7 @@ Dhilla Stuff
                     window.location.reload();
                 },
                 error: function(xhr, status, error) {
-                    alert('Error adding product to cart.');
+                    alert('You must login first to add product to cart!');
                     console.error(error);
                 }
             });

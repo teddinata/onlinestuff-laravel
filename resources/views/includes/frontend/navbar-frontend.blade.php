@@ -62,22 +62,27 @@
                                 <div class="select-items">
                                     <table>
                                         <tbody>
+                                            {{-- check data if any --}}
+
                                             @forelse ($cartItems as $cartItem)
                                                 <tr>
                                                     <td class="si-pic">
-                                                        <img
-                                                            style="width: 70px; height: 70px; object-fit: cover; object-position: center;"
-                                                            src="{{ Storage::url($cartItem->product->galleries->first()->image ? $cartItem->product->galleries->first()->image : '') }}" alt="">
+                                                        @if ($cartItem->product && $cartItem->product->galleries->first())
+                                                            <img
+                                                                style="width: 70px; height: 70px; object-fit: cover; object-position: center;"
+                                                                src="{{ Storage::url($cartItem->product->galleries->first()->image) }}" alt="">
+                                                        @endif
                                                     </td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
-                                                            {{-- <p>{{ $cartItem->product->name }} x {{ $cartItem->quantity }}</p> --}}
-                                                            @if ($cartItem->product->discount_price)
-                                                                <p>Rp{{ number_format($cartItem->product->discount_price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
-                                                            @else
-                                                                <p>Rp{{ number_format($cartItem->product->price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
+                                                            @if ($cartItem->product)
+                                                                @if ($cartItem->product->discount_price)
+                                                                    <p>Rp{{ number_format($cartItem->product->discount_price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
+                                                                @else
+                                                                    <p>Rp{{ number_format($cartItem->product->price, 0, ',', '.') }} x {{ $cartItem->quantity }}</p>
+                                                                @endif
+                                                                <h6>{{ $cartItem->product->name }}</h6>
                                                             @endif
-                                                            <h6>{{ $cartItem->product->name }}</h6>
                                                         </div>
                                                     </td>
                                                     <td class="si-close">

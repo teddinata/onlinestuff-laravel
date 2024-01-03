@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -22,7 +23,13 @@ class FrontendController extends Controller
         $categories = Category::all();
 
         // $cartItems = \Cart::session(auth()->id())->getContent();
-        $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        // $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        } else {
+            $cartItems = collect(); // empty collection
+        }
         $totalPrice = $cartItems->sum(function ($cartItem) {
             $price = $cartItem->product->discount_price > 0
                 ? $cartItem->product->discount_price
@@ -49,6 +56,21 @@ class FrontendController extends Controller
         $categories = Category::all();
 
         $query = Product::query();
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        } else {
+            $cartItems = collect(); // empty collection
+        }
+        $totalPrice = $cartItems->sum(function ($cartItem) {
+            $price = $cartItem->product->discount_price > 0
+                ? $cartItem->product->discount_price
+                : $cartItem->product->price;
+
+            return $price * $cartItem->quantity;
+        });
+        $totalPriceFormatted = $this->formatPrice($totalPrice);
 
         if ($categorySlug) {
             $category = Category::where('slug', $categorySlug)->first();
@@ -78,12 +100,31 @@ class FrontendController extends Controller
             'products' => $products,
             'categorySlug' => $categorySlug,
             'keyword' => $keyword,
+            'cartItems' => $cartItems,
+            'cartItemsCount' => $cartItems->count(),
+            'totalPriceFormatted' => $totalPriceFormatted,
         ]);
     }
 
     public function productDetail($slug)
     {
         $categories = Category::all();
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        } else {
+            $cartItems = collect(); // empty collection
+        }
+        $totalPrice = $cartItems->sum(function ($cartItem) {
+            $price = $cartItem->product->discount_price > 0
+                ? $cartItem->product->discount_price
+                : $cartItem->product->price;
+
+            return $price * $cartItem->quantity;
+        });
+        $totalPriceFormatted = $this->formatPrice($totalPrice);
+
         // Retrieve the product based on the slug
         $product = Product::where('slug', $slug)->firstOrFail();
 
@@ -96,15 +137,33 @@ class FrontendController extends Controller
         // You can add any additional logic here
 
         // Pass the product to the view
-        return view('pages.frontend.detail', compact('product', 'categories', 'relatedProducts'));
+        return view('pages.frontend.detail', compact('product', 'categories', 'relatedProducts', 'cartItems', 'cartItemsCount', 'totalPriceFormatted'));
     }
 
     public function about()
     {
         $categories = Category::all();
 
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cartItems = Cart::with('product')->where('user_id', $user->id)->get();
+        } else {
+            $cartItems = collect(); // empty collection
+        }
+        $totalPrice = $cartItems->sum(function ($cartItem) {
+            $price = $cartItem->product->discount_price > 0
+                ? $cartItem->product->discount_price
+                : $cartItem->product->price;
+
+            return $price * $cartItem->quantity;
+        });
+        $totalPriceFormatted = $this->formatPrice($totalPrice);
+
         return view('pages.frontend.about-us', [
             'categories' => $categories,
+            'cartItems' => $cartItems,
+            'cartItemsCount' => $cartItems->count(),
+            'totalPriceFormatted' => $totalPriceFormatted,
         ]);
     }
     /**
