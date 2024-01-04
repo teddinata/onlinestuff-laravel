@@ -427,7 +427,7 @@ Dhilla Stuff
                         </div>
                         <div class="sb-text">
                             <h6>Free Shipping</h6>
-                            <p>For all order over 99$</p>
+                            <p>Untuk pembelian diatas Rp. 1.000.000</p>
                         </div>
                     </div>
                 </div>
@@ -438,7 +438,7 @@ Dhilla Stuff
                         </div>
                         <div class="sb-text">
                             <h6>Delivery On Time</h6>
-                            <p>If good have prolems</p>
+                            <p>Estimasi pengiriman 1-3 hari kerja</p>
                         </div>
                     </div>
                 </div>
@@ -449,7 +449,7 @@ Dhilla Stuff
                         </div>
                         <div class="sb-text">
                             <h6>Secure Payment</h6>
-                            <p>100% secure payment</p>
+                            <p>100% Pembayaran Aman</p>
                         </div>
                     </div>
                 </div>
