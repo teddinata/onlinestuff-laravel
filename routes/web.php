@@ -65,8 +65,21 @@ Route::get('/about', [App\Http\Controllers\FrontendController::class, 'about'])-
 
 // cart
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/cart', [App\Http\Controllers\FrontendController::class, 'cart'])->name('cart');
+    Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{productId}/{quantity}', [App\Http\Controllers\CartController::class, 'addToCart'])->name('cart.add');
-    Route::delete('/cart/{cartId}', [App\Http\Controllers\CartController::class, 'removeCart'])->name('cart.remove');
+    Route::post('/cart/update', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cart.update');
+    Route::delete('/cart/remove/{id}', [App\Http\Controllers\CartController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/cart/update/{cartId}', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cart.update');
+
+    Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+
+    Route::post('/checkout/process', [App\Http\Controllers\CartController::class, 'checkoutProcess'])->name('checkout.process');
+
+    // success
+    Route::get('/checkout/success/{id}', [App\Http\Controllers\CartController::class, 'checkoutSuccess'])->name('checkout.success');
 });
+
+// route cities
+Route::get('/cities/{province_id}', [App\Http\Controllers\CartController::class, 'getCities'])->name('cities');
+// checkongkir
+Route::post('/checkongkir', [App\Http\Controllers\CartController::class, 'check_ongkir'])->name('checkOngkir');

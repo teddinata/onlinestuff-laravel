@@ -62,7 +62,6 @@
                                 <div class="select-items">
                                     <table>
                                         <tbody>
-                                            {{-- check data if any --}}
 
                                             @forelse ($cartItems as $cartItem)
                                                 <tr>
@@ -86,7 +85,15 @@
                                                         </div>
                                                     </td>
                                                     <td class="si-close">
-                                                        <a href="{{ url('cart/remove', ['id' => $cartItem->id]) }}"><i class="ti-close"></i></a>
+                                                        {{-- <a href="{{ url('cart/remove', ['id' => $cartItem->id]) }}"><i class="ti-close"></i></a> --}}
+                                                        <a href="#" class="remove-from-cart border btn btn-danger" data-cart-item-id="{{ $cartItem->id }}">
+                                                            <i class="fa fa-trash" style="color:white;width: 1.5rem; height: 1.5rem;"></i>
+                                                        </a>
+                                                        {{-- <form action="{{ url('cart/remove/' . $cartItem->id) }}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit"><i class="fa fa-close"></i></button>
+                                                        </form> --}}
                                                     </td>
                                                 </tr>
                                             @empty
@@ -102,7 +109,7 @@
                                     <h5>Rp{{ $totalPriceFormatted }}</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                    <a href="{{ route('cart.index') }}" class="primary-btn view-card">VIEW CARD</a>
                                     <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                 </div>
                             </div>
@@ -164,3 +171,45 @@
     </div>
 </header>
 <!-- Header End -->
+
+@push('addon-script')
+<script>
+    $(document).ready(function() {
+    $('.si-close a').on('click', function(event) {
+        event.preventDefault();
+
+        var cartItemId = $(this).data('cart-item-id');
+
+        // Tambahkan konfirmasi sebelum menghapus
+        if (confirm('Are you sure you want to remove this product from the cart?')) {
+            $.ajax({
+                url: '/cart/remove/' + cartItemId,
+                method: 'POST', // Ganti DELETE dengan POST
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    _method: 'DELETE' // Tambahkan _method dengan nilai DELETE
+                },
+                success: function(response) {
+                    alert('Product removed from cart!');
+                    console.log(response);
+
+                    // Tambahkan session alert disini
+                    @php
+                        Session::flash('alert', [
+                            'type' => 'success',
+                            'message' => 'Product removed from cart successfully!',
+                        ]);
+                    @endphp
+
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    alert('Error removing product from cart.');
+                    console.error(error);
+                }
+            });
+        }
+    });
+});
+</script>
+@endpush

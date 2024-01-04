@@ -7,7 +7,6 @@
     <meta name="keywords" content="Fashi, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
     @stack('prepend-style')
@@ -16,17 +15,13 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
-    @include('includes.frontend.navbar-frontend')
+
+
 
     @yield('content')
-    {{-- @include('sweetalert::alert') --}}
 
-    @include('includes.frontend.footer-frontend')
+    
 
    @stack('prepend-script')
    @include('includes.frontend.script')
