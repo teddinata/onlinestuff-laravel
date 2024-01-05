@@ -343,8 +343,8 @@ DhillaStuff - Detail Produk
                                             <td>
                                                 {{-- check price --}}
                                                 @if ($product->discount_price)
-                                                    <span class="discount">Rp {{ number_format($product->discount_price, 0, ',', '.') }}</span>
-                                                    <span class="original">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                                  Rp {{ number_format($product->discount_price, 0, ',', '.') }}
+                                                  <span class="text-danger"><del>Rp {{ number_format($product->price, 0, ',', '.') }}</del></span>
                                                 @else
                                                     Rp {{ number_format($product->price, 0, ',', '.') }}
                                                 @endif

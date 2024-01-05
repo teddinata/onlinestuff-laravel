@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="cart-price">$150.00</li>
+                        <li class="cart-price">Rp{{ $totalPriceFormatted }}</li>
                     </ul>
                 </div>
             </div>

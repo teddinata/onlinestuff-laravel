@@ -9,18 +9,21 @@
                     </div> --}}
                     {{-- logo --}}
                     <div class="footer-logo">
-                        <a href="#"><img src="{{ url('frontend/img/dhilastuff-logowhite.jpeg') }}" alt="" style="width: 100px; height: 100px; object-fit: cover; object-position: center; border-radius: 50%;"></a>
+                        <a href="#"><img src="{{ url('frontend/img/dhilastuff-logo.jpeg') }}" alt="" style="width: 100px; height: 100px; object-fit: cover; object-position: center; border-radius: 50%;"></a>
                     </div>
                     <ul>
-                        <li>Address: Cilacap Utara, Cilacap</li>
-                        <li>Phone: +62 812-3121-0431</li>
-                        <li>Email: dhilla.stuff@gmail.com</li>
+                        <li>Instagram: @dhilla.stuff</li>
+                        <li>Youtube (Review Stationery): Dhilla Stuff</li>
+                        {{-- <li>Phone: <a href="tel:+6285157356610">+6285157356610</a></li>
+                        <li>Whatsapp: <a href="https://api.whatsapp.com/send?phone=6285157356610">+6285157356610</a></li> --}}
+                        <li>Tiktok:  <a href="https://www.tiktok.com/@dhilla.stuff?_t=8im78sUs9zu&_r=1">Tiktok</a></li>
+                        <li>Shopee: <a href="https://shopee.co.id/dhillastuff?smtt=0.0.9">Shopee</a></li>
+                        <li>Tokopedia: <a href="https://www.tokopedia.com/dhillastuff">Tokopedia</a></li>
                     </ul>
                     <div class="footer-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="https://www.instagram.com/dhilla.stuff?igsh=ODA1NTc5OTg5Nw%3D%3D&utm_source=qr"><i class="fa fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=6285157356610"><i class="fa fa-whatsapp"></i></a>
+                        <a href="https://youtube.com/@dhillastuff?si=PAoIepymZ6vYNyHt"><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
             </div>

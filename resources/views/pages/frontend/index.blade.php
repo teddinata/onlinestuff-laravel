@@ -4,40 +4,26 @@
 Dhilla Stuff
 @endsection
 
+
+
 @section('content')
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7461.PNG') }}">
+        {{-- <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7461.PNG') }}"> --}}
+        <div class="single-hero-items">
+            <img src="{{ url('frontend/img/IMG_7461.PNG') }}" alt="Hero Image 1">
             <div class="container">
                 <div class="row">
-                    {{-- <div class="col-lg-5">
-                        <span>Bag,kids</span>
-                        <h1>Black friday</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore</p>
-                        <a href="#" class="primary-btn">Shop Now</a>
-                    </div> --}}
                 </div>
-                {{-- <div class="off-card">
-                    <h2>Sale <span>50%</span></h2>
-                </div> --}}
             </div>
         </div>
-        <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7458.PNG') }}">
+        {{-- <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7458.PNG') }}"> --}}
+        <div class="single-hero-items">
+            <img src="{{ url('frontend/img/IMG_7458.PNG') }}" alt="Hero Image 2">
             <div class="container">
                 <div class="row">
-                    {{-- <div class="col-lg-5">
-                        <span>Bag,kids</span>
-                        <h1>Black friday</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore</p>
-                        <a href="#" class="primary-btn">Shop Now</a>
-                    </div> --}}
                 </div>
-                {{-- <div class="off-card">
-                    <h2>Sale <span>50%</span></h2>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -117,7 +103,7 @@ Dhilla Stuff
                                     <a href="#"><i class="icon_bag_alt"></i></a>
                                 </li>
 
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
+                                <li class="quick-view"><a href="{{ route('product.detail', $product->slug) }}">+ Quick View</a></li>
                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                             </ul>
                         </div>
@@ -304,37 +290,43 @@ Dhilla Stuff
 
 <!-- Instagram Section Begin -->
 <div class="instagram-photo">
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-1.jpeg') }}">
+   <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-1.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-2.jpeg') }}">
+   <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-2.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-3.jpeg') }}">
+   <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-3.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-4.jpeg') }}">
+    <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-4.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-5.jpeg') }}">
+    <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-5.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
         </div>
     </div>
-    <div class="insta-item set-bg" data-setbg="{{ url('frontend/img/ig-6.jpeg') }}">
+    <div class="insta-item ">
+        <img src="{{ url('frontend/img/ig-6.jpeg') }}" alt="">
         <div class="inside-text">
             <i class="ti-instagram"></i>
             <h5><a href="https://www.instagram.com/dhilla.stuff/" target="_blank">dhila.stuff</a></h5>
@@ -493,6 +485,60 @@ Dhilla Stuff
 </div>
 <!-- Partner Logo Section End -->
 @endsection
+
+@push('prepend-style')
+<style>
+     .hero-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .single-hero-items {
+        position: relative;
+        overflow: hidden;
+        max-height: 500px; /* Sesuaikan tinggi maksimum sesuai kebutuhan Anda */
+    }
+
+    .single-hero-items img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @media (max-width: 767px) {
+        .single-hero-items {
+            max-height: 300px; /* Atur tinggi maksimum untuk tampilan mobile */
+        }
+    }
+    .instagram-photo {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px; /* Mengatasi margin negatif yang mungkin muncul dari flex container */
+    }
+
+    .insta-item {
+        flex: 1 0 calc(33.333% - 10px); /* Mengatur lebar item untuk tampilan desktop */
+        margin: 5px; /* Mengatur margin antar item */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .insta-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-width: 100%; /* Mencegah gambar terpotong pada tampilan mobile */
+    }
+
+    @media (max-width: 767px) {
+        .insta-item {
+            flex: 1 0 calc(50% - 10px); /* Mengatur lebar item untuk tampilan mobile */
+        }
+    }
+
+</style>
+
+@endpush
 
 @push('addon-script')
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

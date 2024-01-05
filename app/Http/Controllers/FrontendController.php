@@ -124,6 +124,7 @@ class FrontendController extends Controller
             return $price * $cartItem->quantity;
         });
         $totalPriceFormatted = $this->formatPrice($totalPrice);
+        $cartItemsCount = $cartItems->count();
 
         // Retrieve the product based on the slug
         $product = Product::where('slug', $slug)->firstOrFail();

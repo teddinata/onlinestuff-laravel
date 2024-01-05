@@ -7,7 +7,7 @@
     <meta name="keywords" content="Dhilla Stuff Aesthetic Stationery Shop">
 
     <meta property="og:description" content="Dhilla Stuff Aesthetic Stationery Shop">
-    <meta property="og:image" content="{{ url('frontend/img/logo.png') }}">
+    <meta property="og:image" content="{{ url('frontend/img/dhillastuff-logo.jpeg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
 
     <!-- Opsional: menentukan jenis konten -->
