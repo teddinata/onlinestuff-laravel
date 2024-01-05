@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,10 +44,10 @@ Route::middleware([
             Route::resource('product', ProductController::class);
             Route::resource('gallery', GalleryController::class);
             // // user
-            // Route::resource('user', UserController::class);
+            Route::resource('user', UserController::class);
             // Route::resource('size', SizeController::class);
             // Route::resource('product_size', ProductSizeController::class);
-            // Route::resource('transactions', TransactionController::class);
+            Route::resource('transactions', TransactionController::class);
 
 
         });

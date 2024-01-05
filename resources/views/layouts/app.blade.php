@@ -73,7 +73,9 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script src="https://cdn.tiny.cloud/1/YOUR-API-KEY/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
         <script>
         tinymce.init({
             selector: 'textarea#editor',  // Ganti dengan ID atau class dari textarea Anda

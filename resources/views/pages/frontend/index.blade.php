@@ -425,7 +425,7 @@ Dhilla Stuff
         </div>
         <div class="benefit-items">
             <div class="row">
-                <div class="col-lg-4">
+                {{-- <div class="col-lg-4">
                     <div class="single-benefit">
                         <div class="sb-icon">
                             <img src="{{ url('frontend/img/icon-1.png') }}" alt="">
@@ -435,15 +435,15 @@ Dhilla Stuff
                             <p>Untuk pembelian diatas Rp. 1.000.000</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-lg-4">
                     <div class="single-benefit">
                         <div class="sb-icon">
                             <img src="{{ url('frontend/img/icon-2.png') }}" alt="">
                         </div>
                         <div class="sb-text">
-                            <h6>Delivery On Time</h6>
-                            <p>Estimasi pengiriman 1-3 hari kerja</p>
+                            <h6>Shipping All Over Indonesia</h6>
+                            <p>Pengiriman ke seluruh Indonesia</p>
                         </div>
                     </div>
                 </div>
@@ -458,6 +458,7 @@ Dhilla Stuff
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

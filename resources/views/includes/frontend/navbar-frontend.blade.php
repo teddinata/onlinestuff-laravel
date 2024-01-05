@@ -8,8 +8,7 @@
                     hello@dhillastuff.biz.id
                 </div>
                 <div class="phone-service">
-                    <i class=" fa fa-phone"></i>
-                    +62 812-3121-0431
+                    <a href="https://api.whatsapp.com/send?phone=6285157356610"><i class=" fa fa-whatsapp"> + 6285 1573 56610</i></a>
                 </div>
             </div>
             <div class="ht-right">
