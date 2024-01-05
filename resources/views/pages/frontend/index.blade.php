@@ -96,7 +96,12 @@ Dhilla Stuff
                     @foreach ($products as $product)
                     <div class="product-item">
                         <div class="pi-pic">
-                            <img src="{{ Storage::url($product->galleries->first()->image) }}" alt="" style="width: 100%; height: 300px; object-fit: cover; object-position: center; border-radius: 10px;">
+                           {{-- check image --}}
+                            @if ($product->galleries->count())
+                                <img src="{{ asset('storage/'.$product->galleries->first()->image) }}" alt="{{ $product->name }}">
+                            @else
+                                <img src="https://via.placeholder.com/300" alt="{{ $product->name }}">
+                            @endif
                             @if ($product->discount_price > 0)
                                 <div class="sale">Discount</div>
                             @endif
