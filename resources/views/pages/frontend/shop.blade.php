@@ -293,7 +293,6 @@
 @endpush
 
 @push('addon-script')
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.w-icon').on('click', function() {

@@ -259,7 +259,7 @@ DhillaStuff - Detail Produk
                             </div> --}}
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" id="quantity" value="1">
+                                    <input type="text" id="quantity" value="{{ old('quantity') ? old('quantity') : 1 }}" min="1" max="{{ $product->stock }}" name="quantity">
                                 </div>
                                 <form id="addToCart"  method="POST">
                                     @csrf
@@ -516,7 +516,7 @@ DhillaStuff - Detail Produk
 @endsection
 
 @push('addon-script')
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
 <script>
     function addToCart() {
         // Check if jQuery is loaded
@@ -549,17 +549,14 @@ DhillaStuff - Detail Produk
         });
     }
 
-    // Jika ingin mengupdate nilai quantity saat input diubah
-    $('#quantity').on('input', function() {
-        $('#quantityValue').val($(this).val());
-    });
-</script>
 
+</script>
 <script>
-    var $j = jQuery.noConflict();
-
-    $j(document).ready(function() {
-        // Your jQuery code using $j instead of $
+    $(document).ready(function() {
+        $('#quantity').on('input', function() {
+            var quantity = $(this).val();
+            $('#quantityValue').val(quantity);
+        });
     });
-</script>
+    </script>
 @endpush

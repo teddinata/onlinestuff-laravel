@@ -21,7 +21,7 @@
 <!-- Breadcrumb Section Begin -->
 
 <!-- Map Section Begin -->
-<div class="map spad">
+{{-- <div class="map spad">
     <div class="container">
         <div class="map-inner">
             <iframe
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Map Section Begin -->
 
 <!-- Contact Section Begin -->
@@ -43,8 +43,8 @@
             <div class="col-lg-5">
                 <div class="contact-title">
                     <h4>Contacts Us</h4>
-                    <p>Contrary to popular belief, Lorem Ipsum is simply random text. It has roots in a piece of
-                        classical Latin literature from 45 BC, maki years old.</p>
+                    <p>Hello Dear Customer! How can we help you? If you have any questions or proposals,
+                        please feel free to contact us via email or phone.</p>
                 </div>
                 <div class="contact-widget">
                     <div class="cw-item">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Address:</span>
-                            <p>60-49 Road 11378 New York</p>
+                            <p>Indonesia</p>
                         </div>
                     </div>
                     <div class="cw-item">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Phone:</span>
-                            <p>+65 11.188.888</p>
+                            <p>+ 6285 1573 56610
                         </div>
                     </div>
                     <div class="cw-item">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="ci-text">
                             <span>Email:</span>
-                            <p>hellocolorlib@gmail.com</p>
+                            <p> hello@dhillastuff.biz.id</p>
                         </div>
                     </div>
                 </div>
