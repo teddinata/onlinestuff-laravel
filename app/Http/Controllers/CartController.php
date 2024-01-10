@@ -215,6 +215,7 @@ class CartController extends Controller
         $transaction->payment_method = $request->payment_method;
         $transaction->payment_status = 'pending';
         $transaction->shipping_status = 'packing';
+        $transaction->notes = $request->notes;
         $transaction->save();
 
         foreach ($cartItems as $cartItem) {

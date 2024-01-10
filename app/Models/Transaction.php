@@ -32,7 +32,8 @@ class Transaction extends Model
         'payment_method',
         'payment_status',
         'shipping_status',
-        'estimated_arrival'
+        'estimated_arrival',
+        'notes',
     ];
 
     public function user()

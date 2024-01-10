@@ -128,6 +128,12 @@ DhillaStuff - Checkout
                             </select>
                         </div>
 
+                        {{-- textarea notes --}}
+                        <div class="col-lg-12">
+                            <label for="notes">Notes (optional)</label>
+                            <textarea name="notes" id="notes" cols="20" rows="5" class="form-control"></textarea>
+                        </div>
+
                         {{-- button pilih ongkir --}}
                         {{-- <div class="col-lg-6 mt-1">
                             <label for="courier">Pilih Ongkir<span>*</span></label>

@@ -38,6 +38,8 @@ class CheckoutRequest extends FormRequest
             'payment_method' => 'nullable|string|max:255',
             'payment_status' => 'nullable|string|max:255',
             'shipping_status' => 'nullable|string|max:255',
+            'estimated_arrival' => 'nullable|string|max:255',
+            'notes' => 'nullable|string|max:1000',
         ];
     }
 }
