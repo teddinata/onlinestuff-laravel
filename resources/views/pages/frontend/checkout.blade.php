@@ -175,6 +175,21 @@ DhillaStuff - Checkout
                                 <li class="fw-normal">Grand Total <span id="grand-total">Rp. 0</span></li>
 
                             </ul>
+                            <div  class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-info" role="alert">
+                                        <h4 class="alert-heading">Payment Instruction</h4>
+                                        <p>Transfer to Bank Account</p>
+                                        <p>Bank Name : BCA</p>
+                                        <p>Account Number : 123456789</p>
+                                        <p>Account Name : PT. Karya Anak Bangsa</p>
+                                        <hr>
+                                        <p class="mb-0">Please send the proof of payment to email : <strong>
+                                            <a href="mailto:
+                                            kwowkowkow@gmail.com">hello.dhillastuff@gmail.com</a></strong></p>
+                                    </div>
+                                </div>
+                            </div>
                             <input type="hidden" id="grand-total-input" name="grand_total">
                             <input type="hidden" id="shipping-cost-input" name="shipping_cost">
                             <input type="hidden" id="etd-input" name="etd">
