@@ -4,36 +4,48 @@
 Dhilla Stuff
 @endsection
 
+@push('prepend-style')
+    <style>
+    .hero-section {
+        height: 500px; /* Set the desired height for your hero section, 1/3 of the original */
+    }
 
+    .hero-items {
+        height: 100%; /* Adjust the height to fill the hero section */
+    }
+
+    .single-hero-items {
+        height: 100%; /* Make each hero item fill the container */
+        background-size: cover; /* Maintain image aspect ratio and cover the container */
+        background-position: center; /* Center the background image */
+        max-width: 100%; /* Make sure the image doesn't exceed the container width */
+        margin: 0; /* Remove any default margin */
+    }
+
+    /* Update the media query for mobile responsiveness */
+    @media (max-width: 767px) {
+        .single-hero-items img {
+            width: 100%; /* Make sure the image fills the container on small screens */
+        }
+    }
+    </style>
+@endpush
 
 @section('content')
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        {{-- <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7461.PNG') }}"> --}}
-        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/IMG_7461.PNG') }}"></div>
+        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner1.png') }}"></div>
         <div class="single-hero-items">
-            {{-- <img src="{{ url('frontend/img/IMG_7461.PNG') }}" alt="Hero Image 1"> --}}
-             <!-- Tampilan mobile menggunakan img -->
-            <img src="{{ url('frontend/img/IMG_7461.PNG') }}" alt="Hero Image 1" class="d-md-none img-fluid">
-            <div class="container">
-                <div class="row">
-                </div>
-            </div>
+            <img src="{{ url('frontend/img/banner1.png') }}" alt="Hero Image 1" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
         </div>
-        {{-- <div class="single-hero-items set-bg" data-setbg="{{ url('frontend/img/IMG_7458.PNG') }}"> --}}
-            <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/IMG_7458.PNG') }}"></div>
-            <div class="single-hero-items">
-                {{-- <img src="{{ url('frontend/img/IMG_7461.PNG') }}" alt="Hero Image 1"> --}}
-                 <!-- Tampilan mobile menggunakan img -->
-                <img src="{{ url('frontend/img/IMG_7458.PNG') }}" alt="Hero Image 1" class="d-md-none img-fluid">
-            <div class="container">
-                <div class="row">
-                </div>
-            </div>
+        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner2.png') }}"></div>
+        <div class="single-hero-items">
+            <img src="{{ url('frontend/img/banner2.png') }}" alt="Hero Image 2" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
         </div>
     </div>
 </section>
+
 <!-- Hero Section End -->
 
 <!-- Banner Section Begin -->
