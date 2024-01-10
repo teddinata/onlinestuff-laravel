@@ -31,7 +31,7 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="{{ url('/') }}">
-                            <img src="{{ url('frontend/img/dhilastuff-logowhite.jpeg') }}" alt="" style="width: 100px; height: 100px; object-fit: cover; object-position: center; border-radius: 50%;">
+                            <img src="{{ url('frontend/img/dhillastuff-logowhite.png') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -44,8 +44,30 @@
                         </div>
                     </div> --}}
                 </div>
+
                 <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
+                        {{-- icon user --}}
+                        {{-- <li class="nav-item dropdown" style="color: yellow;cursor: pointer;">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"></i> <!-- Change this line -->
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+                                @guest
+                                    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                @endguest
+                            </div>
+                        </li> --}}
                         <li class="heart-icon">
                             <a href="#">
                                 <i class="icon_heart_alt"></i>
@@ -109,7 +131,7 @@
                                 </div>
                                 <div class="select-button">
                                     <a href="{{ route('cart.index') }}" class="primary-btn view-card">VIEW CARD</a>
-                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    {{-- <a href="#" class="primary-btn checkout-btn">CHECK OUT</a> --}}
                                 </div>
                             </div>
                         </li>
@@ -171,7 +193,17 @@
 </header>
 <!-- Header End -->
 
+@push('addon-style')
+    <style>
+
+    </style>
+
+@endpush
+
 @push('addon-script')
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
     $('.si-close a').on('click', function(event) {

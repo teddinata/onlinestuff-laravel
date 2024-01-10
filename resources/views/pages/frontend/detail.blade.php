@@ -178,11 +178,6 @@ DhillaStuff - Detail Produk
 
                         <!-- Video Section -->
                         <div class="product-video mt-2">
-                            <!-- Embed YouTube video using iframe -->
-                            {{-- check video --}}
-                            {{-- {{ $product->video_url }}
-                            https://drive.google.com/file/d/1FH_7udpQxrA5aEd2UoHv4ajIJkKyYKMk/view --}}
-
                             @if ($product->video_url)
                             @php
                                 $youtubeUrl = $product->video_url;
@@ -264,13 +259,14 @@ DhillaStuff - Detail Produk
                             </div> --}}
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" id="quantity" value="1">
                                 </div>
-                                {{-- <form action="{{ route('cart.add', $products->id) }}" --}}
-                                    <form action=""
-                                    method="post">
+                                <form id="addToCart"  method="POST">
                                     @csrf
-                                    <button type="submit" class="primary-btn pd-cart">
+                                    @method('POST')
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" id="quantityValue" value="1">
+                                    <button type="button" class="primary-btn pd-cart" onclick="addToCart()">
                                         Add To Cart
                                     </button>
                                 </form>
@@ -515,5 +511,57 @@ DhillaStuff - Detail Produk
         </div>
     </div>
 </div>
+
 <!-- Related Products Section End -->
 @endsection
+
+@push('addon-script')
+<!-- Ensure jQuery is loaded before your script -->
+{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function addToCart() {
+        // Check if jQuery is loaded
+        if (typeof jQuery === 'undefined') {
+            console.error('jQuery is not loaded.');
+            return;
+        }
+
+        var productId = $('input[name="product_id"]').val();
+        var quantity = $('#quantityValue').val();
+
+        $.ajax({
+            // url: '{{ route("cart.add", ["productId" => $product->id, "quantity" => 1]) }}',
+            url: '/cart/' + productId + '/' + quantity,
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                product_id: productId,
+                quantity: quantity
+            },
+            success: function(response) {
+                alert('Product added to cart!');
+                console.log(response);
+                window.location.reload();
+            },
+            error: function(xhr, status, error) {
+                alert('You must login first to add product to cart!');
+                console.error(error);
+            }
+        });
+    }
+
+    // Jika ingin mengupdate nilai quantity saat input diubah
+    $('#quantity').on('input', function() {
+        $('#quantityValue').val($(this).val());
+    });
+</script>
+
+<script>
+    var $j = jQuery.noConflict();
+
+    $j(document).ready(function() {
+        // Your jQuery code using $j instead of $
+    });
+</script>
+@endpush

@@ -82,13 +82,13 @@ Dhilla Stuff
             <div class="col-lg-8 offset-lg-1">
                 <div class="filter-control">
                     <ul class="nav nav-tabs">
-                        @foreach($categories as $category)
+                        {{-- @foreach($categories as $category)
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::segment(2) == $category->slug ? 'active' : '' }}"
                                    id="{{ $category->slug }}-tab" data-toggle="tab"
                                    href="{{ url('/shop', ['category' => $category->slug]) }}">{{ $category->name }}</a>
                             </li>
-                        @endforeach
+                        @endforeach --}}
                     </ul>
                 </div>
 
