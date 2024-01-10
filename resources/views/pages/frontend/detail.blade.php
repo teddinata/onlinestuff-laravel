@@ -516,9 +516,7 @@ DhillaStuff - Detail Produk
 @endsection
 
 @push('addon-script')
-<!-- Ensure jQuery is loaded before your script -->
-{{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     function addToCart() {
         // Check if jQuery is loaded
