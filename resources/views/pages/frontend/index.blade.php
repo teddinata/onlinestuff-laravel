@@ -35,13 +35,13 @@ Dhilla Stuff
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner1.png') }}"></div>
+        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner1.PNG') }}"></div>
         <div class="single-hero-items">
-            <img src="{{ url('frontend/img/banner1.png') }}" alt="Hero Image 1" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
+            <img src="{{ url('frontend/img/banner1.PNG') }}" alt="Hero Image 1" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
         </div>
-        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner2.png') }}"></div>
+        <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner2.PNG') }}"></div>
         <div class="single-hero-items">
-            <img src="{{ url('frontend/img/banner2.png') }}" alt="Hero Image 2" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
+            <img src="{{ url('frontend/img/banner2.PNG') }}" alt="Hero Image 2" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
         </div>
     </div>
 </section>
