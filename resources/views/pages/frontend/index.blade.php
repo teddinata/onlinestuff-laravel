@@ -15,11 +15,12 @@ Dhilla Stuff
     }
 
     .single-hero-items {
-        height: 100%; /* Make each hero item fill the container */
+        height: 25%; /* Make each hero item fill the container */
         background-size: cover; /* Maintain image aspect ratio and cover the container */
         background-position: center; /* Center the background image */
         max-width: 100%; /* Make sure the image doesn't exceed the container width */
         margin: 0; /* Remove any default margin */
+
     }
 
     /* Update the media query for mobile responsiveness */
@@ -37,11 +38,11 @@ Dhilla Stuff
     <div class="hero-items owl-carousel">
         <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner1.PNG') }}"></div>
         <div class="single-hero-items">
-            <img src="{{ url('frontend/img/banner1.PNG') }}" alt="Hero Image 1" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
+            <img src="{{ url('frontend/img/banner1.PNG') }}" alt="Hero Image 1" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 80%; margin: 0;">
         </div>
         <div class="single-hero-items d-none d-md-block set-bg" data-setbg="{{ url('frontend/img/banner2.PNG') }}"></div>
         <div class="single-hero-items">
-            <img src="{{ url('frontend/img/banner2.PNG') }}" alt="Hero Image 2" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 100%; margin: 0;">
+            <img src="{{ url('frontend/img/banner2.PNG') }}" alt="Hero Image 2" class="d-md-none img-fluid" style="width: 80%; height: 80%; object-fit: cover; object-position: center; max-width: 80%; margin: 0;">
         </div>
     </div>
 </section>
